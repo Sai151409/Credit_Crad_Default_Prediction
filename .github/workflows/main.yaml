@@ -1,48 +1,39 @@
-name: Docker Image CI
+name: Deploy to ECR
 
 on:
+ 
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ main ]
 
 jobs:
-
+  
   build:
-
+    
+    name: Build Image
     runs-on: ubuntu-latest
 
+   
     steps:
-    - uses: actions/checkout@v2
-      with:
-        lfs: 'true'
-    - 
-      name: Build the Docker image
-      run: docker build -t sairam151409/credit_crad_default_prediction -f Dockerfile .
-    -
-      name: Generate Deployment Package
-      run: zip -r deploy.zip *
-    -
-      name: Get timestamp
-      uses: gerred/actions/current-time@master
-      id: current-time
-        
-    - name: Run string replace
-      uses: frabert/replace-string-action@master
-      id: format-time
-      with:
-        pattern: '[:\.]+'
-        string: "${{ steps.current-time.outputs.time }}"
-        replace-with: '-'
-        flags: 'g'
 
-    - name: Deploy to EB
-      uses: einaregilsson/beanstalk-deploy@v14
+    - name: Check out code
+      uses: actions/checkout@v2
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: credit_card_defaultation
-        environment_name: Creditcarddefaultation-env
-        version_label: "credit_card_defaultation-${{ steps.format-time.outputs.replaced }}"
-        region: ap-south-1
-        deployment_package: deploy.zip
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-south-1
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Build, tag, and push image to Amazon ECR
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: docker_nodejs_demo
+        IMAGE_TAG: nodejs_demo_image
+      run: |
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
