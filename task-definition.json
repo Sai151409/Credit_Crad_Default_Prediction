@@ -22,7 +22,7 @@
     "networkMode": "awsvpc",
     "memory": "512",
     "cpu": "256",
-    "executionRoleArn": "arn:aws:iam::759732326744:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::759732326744:role/credit-card-defaultation-execution-role",
     "family": "credit-card-defaultation-task-definition",
     "taskRoleArn": "",
     "placementConstraints": []
