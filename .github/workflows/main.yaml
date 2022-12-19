@@ -30,7 +30,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: ecs-devops-sandbox-repository
+        ECR_REPOSITORY: credit_card_defaultation
         IMAGE_TAG: ${{ github.sha }}
       run: |
         # Build a docker container and
