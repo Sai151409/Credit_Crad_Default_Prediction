@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: <encoding name> -*-
+
 FROM python:3.7
 COPY . /app
 WORKDIR /app
