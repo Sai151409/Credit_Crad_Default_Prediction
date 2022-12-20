@@ -1,0 +1,60 @@
+grid_search:
+  class: GridSearchCV
+  module: sklearn.model_selection
+  params:
+    cv : 5
+    verbose : 2
+
+model_selection:
+  module_0:
+    class : LogisticRegression
+    module : sklearn.linear_model
+    params :
+      fit_intercept : True
+    search_param_grid:
+      penalty : ['l2']
+      solver : ['lbfgs']
+      C : [0.0001, 0.0003, 0.0007, 0.0018, 0.0048, 0.0127, 0.0336, 0.0886, 0.2336, 0.6158, 
+      1.6238, 4.2813, 11.2884, 29.7635, 78.476, 206.9138, 545.5595, 1438.4499, 3792.6902, 10000.0]
+      max_iter : [50, 80, 100, 120]
+
+  module_1:
+    class : DecisionTreeClassifier
+    module : sklearn.tree
+    params : 
+      min_samples_leaf : 3
+    search_param_grid :
+      criterion : ['entropy']
+      max_depth : [3,4,5]
+      min_samples_split : [2,4,6]
+
+  module_2:
+    class : RandomForestClassifier
+    module : sklearn.ensemble
+    params : 
+      min_samples_leaf : 3
+    search_param_grid :
+      n_estimators : [100, 110]
+      max_depth : [4,5,6]
+      min_samples_split : [2,4,6]
+  
+  module_3:
+    class : GradientBoostingClassifier
+    module : sklearn.ensemble
+    params : 
+      min_samples_leaf : 3
+    search_param_grid :
+      learning_rate : [0.01]
+      n_estimators : [500]
+      criterion : ['friedman_mse']
+
+  module_4:
+    class : AdaBoostClassifier
+    module : sklearn.ensemble
+    params : 
+      algorithm : 'SAMME.R'
+    search_param_grid : 
+      n_estimators : [2, 3, 4, 5]
+      learning_rate : [0.97, 0.98, 0.99, 1.0]
+      algorithm : ['SAMME', 'SAMME.R']
+

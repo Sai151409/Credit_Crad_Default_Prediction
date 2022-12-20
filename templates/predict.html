@@ -1,0 +1,411 @@
+{% extends 'header.html' %}
+
+{% block head %}
+
+
+<title>Credit Card Default Estimator</title>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6">
+
+
+        <form action="/predict" method="post">
+            <legend>Credit Card Default Estimation Form</legend>
+            <div class="mb-3">
+                <label class="form-label">LIMIT_BAL</label>
+                <input class="form-control" type="text" name="LIMIT_BAL" placeholder="Enter a value of balance limit"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">SEX</label>
+                <select class="form-control" type="text" name="SEX" placeholder="Enter a person is male or female"
+                    required>
+                    <option value = ''>
+                        Please Choose an option
+                    </option>
+                    <option value = 1>
+                        1 = MALE
+                    </option>
+                    <option value = 2>
+                        2 = FEMALE
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">EDUCATION</label>
+                <select class="form-control" type="text" name="EDUCATION"
+                    placeholder="Enter the education qualification" required>
+                    <option value = ''>
+                        Please Choose an option
+                    </option>
+                    <option value = 1>
+                        1 = GRADUATE SCHOOL
+                    </option>
+                    <option value = 2>
+                        2 = UNIVERSITY
+                    </option>
+                    <option value = 3>
+                        3 = HIGH SCHOOL
+                    </option>
+                    <option value = 4 >
+                        4 = OTHERS
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">MARRIAGE</label>
+                <select class="form-control" type="text" name="MARRIAGE" placeholder="Enter the status of marriage"
+                    required>
+                    <option value = ''>
+                        Please Choose an option
+                    </option>
+                    <option value = 1>
+                        1 = MARRIED
+                    </option>
+                    <option value = 2>
+                        2 = SINGLE
+                    </option>
+                    <option value = 3>
+                        3 = OTHERS
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">AGE</label>
+                <input class="form-control" type="text" name="AGE" placeholder="Enter the value of age"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PAY_0</label>
+                <select class="form-control" type="text" name="PAY_0"
+                    placeholder="Repayment status in september" required>
+                    <option value = ''>
+                        Please Choose an option
+                    </option>
+                    <option value = 1>
+                        1 = payment delay for one month
+                    </option>
+                    <option value = 2>
+                        2 = payment delay for two months
+                    </option>
+                    <option value = 3>
+                        3 = payment delay for three months
+                    </option>
+                    <option value = 4>
+                        4 = payment delay for four months
+                    </option>
+                    <option value = 5>
+                        5 = payment delay for five months
+                    </option>
+                    <option value = 6>
+                        6 = payment delay for six months
+                    </option>
+                    <option value = 7>
+                        7 = payment delay for seven months
+                    </option>
+                    <option value = 8>
+                        8 = payment delay for eight months
+                    </option>
+                    <option value = 0>
+                        0 = pay duly or other
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PAY_2</label>
+                <select class="form-control" type="text" name="PAY_2"
+                    placeholder="Repayment status in august" required>
+                    <option value = ''>
+                        Please Choose an option
+                    </option>
+                    <option value = 1>
+                        1 = payment delay for one month
+                    </option>
+                    <option value = 2>
+                        2 = payment delay for two months
+                    </option>
+                    <option value = 3>
+                        3 = payment delay for three months
+                    </option>
+                    <option value = 4>
+                        4 = payment delay for four months
+                    </option>
+                    <option value = 5>
+                        5 = payment delay for five months
+                    </option>
+                    <option value = 6>
+                        6 = payment delay for six months
+                    </option>
+                    <option value = 7>
+                        7 = payment delay for seven months
+                    </option>
+                    <option value = 8>
+                        8 = payment delay for eight months
+                    </option>
+                    <option value = 0>
+                        0 = pay duly or other
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PAY_3</label>
+                <select class="form-control" type="text" name="PAY_3"
+                    placeholder="Repayment status in july" required>
+                    <option value = ''>
+                        Please Choose an option
+                    </option>
+                    <option value = 1>
+                        1 = payment delay for one month
+                    </option>
+                    <option value = 2>
+                        2 = payment delay for two months
+                    </option>
+                    <option value = 3>
+                        3 = payment delay for three months
+                    </option>
+                    <option value = 4>
+                        4 = payment delay for four months
+                    </option>
+                    <option value = 5>
+                        5 = payment delay for five months
+                    </option>
+                    <option value = 6>
+                        6 = payment delay for six months
+                    </option>
+                    <option value = 7>
+                        7 = payment delay for seven months
+                    </option>
+                    <option value = 8>
+                        8 = payment delay for eight months
+                    </option>
+                    <option value = 0>
+                        0 = pay duly or other
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PAY_4</label>
+                <select class="form-control" type="text" name="PAY_4"
+                    placeholder="Repayment status in june" required>
+                    <option value = ''>
+                        Please Choose an option
+                    </option>
+                    <option value = 1>
+                        1 = payment delay for one month
+                    </option>
+                    <option value = 2>
+                        2 = payment delay for two months
+                    </option>
+                    <option value = 3>
+                        3 = payment delay for three months
+                    </option>
+                    <option value = 4>
+                        4 = payment delay for four months
+                    </option>
+                    <option value = 5>
+                        5 = payment delay for five months
+                    </option>
+                    <option value = 6>
+                        6 = payment delay for six months
+                    </option>
+                    <option value = 7>
+                        7 = payment delay for seven months
+                    </option>
+                    <option value = 8>
+                        8 = payment delay for eight months
+                    </option>
+                    <option value = 0>
+                        0 = pay duly or other
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PAY_5</label>
+                <select class="form-control" type="text" name="PAY_5"
+                    placeholder="Repayment status in may" required>
+                    <option value = ''>
+                        Please Choose an option
+                    </option>
+                    <option value = 1>
+                        1 = payment delay for one month
+                    </option>
+                    <option value = 2>
+                        2 = payment delay for two months
+                    </option>
+                    <option value = 3>
+                        3 = payment delay for three months
+                    </option>
+                    <option value = 4>
+                        4 = payment delay for four months
+                    </option>
+                    <option value = 5>
+                        5 = payment delay for five months
+                    </option>
+                    <option value = 6>
+                        6 = payment delay for six months
+                    </option>
+                    <option value = 7>
+                        7 = payment delay for seven months
+                    </option>
+                    <option value = 8>
+                        8 = payment delay for eight months
+                    </option>
+                    <option value = 0>
+                        0 = pay duly or other
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PAY_6</label>
+                <select class="form-control" type="text" name="PAY_6"
+                    placeholder="Repayment status in april" required>
+                    <option value = ''>
+                        Please Choose an option
+                    </option>
+                    <option value = 1>
+                        1 = payment delay for one month
+                    </option>
+                    <option value = 2>
+                        2 = payment delay for two months
+                    </option>
+                    <option value = 3>
+                        3 = payment delay for three months
+                    </option>
+                    <option value = 4>
+                        4 = payment delay for four months
+                    </option>
+                    <option value = 5>
+                        5 = payment delay for five months
+                    </option>
+                    <option value = 6>
+                        6 = payment delay for six months
+                    </option>
+                    <option value = 7>
+                        7 = payment delay for sevn months
+                    </option>
+                    <option value = 8>
+                        8 = payment delay for eight months
+                    </option>
+                    <option value = 0>
+                        0 = pay duly or other
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">BILL_AMT1</label>
+                <input class="form-control" type="text" name="BILL_AMT1" placeholder="Amount of bill statement in september, 2005"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">BILL_AMT2</label>
+                <input class="form-control" type="text" name="BILL_AMT2" placeholder="Amount of bill statement in august, 2005"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">BILL_AMT3</label>
+                <input class="form-control" type="text" name="BILL_AMT3" placeholder="Amount of bill statement in july, 2005"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">BILL_AMT4</label>
+                <input class="form-control" type="text" name="BILL_AMT4" placeholder="Amount of bill statement in june, 2005"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">BILL_AMT5</label>
+                <input class="form-control" type="text" name="BILL_AMT5" placeholder="Amount of bill statement in may, 2005"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">BILL_AMT6</label>
+                <input class="form-control" type="text" name="BILL_AMT6" placeholder="Amount of bill statement in april, 2005"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PAY_AMT1</label>
+                <input class="form-control" type="text" name="PAY_AMT1" placeholder="Amount of bill statement in september, 2005"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PAY_AMT2</label>
+                <input class="form-control" type="text" name="PAY_AMT2" placeholder="Amount of bill statement in august, 2005"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PAY_AMT3</label>
+                <input class="form-control" type="text" name="PAY_AMT3" placeholder="Amount of bill statement in july, 2005"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PAY_AMT4</label>
+                <input class="form-control" type="text" name="PAY_AMT4" placeholder="Amount of bill statement in june, 2005"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PAY_AMT5</label>
+                <input class="form-control" type="text" name="PAY_AMT5" placeholder="Amount of bill statement in may, 2005"
+                    required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">PAY_AMT6</label>
+                <input class="form-control" type="text" name="PAY_AMT6" placeholder="Amount of bill statement in april, 2005"
+                    required />
+            </div>
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Credit Card Defaultation" required />
+            </div>
+
+        </form>
+    </div>
+
+    <div class="col-md-6 col-sm-12 col-xs-6 col-lg-6">
+        <div class="card">
+            <div class="card-header">
+              Credit Card Defaultation
+            </div>
+            <div class="card-body">
+        {% if context['credit_card_data'] is not none %}
+        <table class="table table-striped">
+            <caption>Credit Card Default Estimator</caption>
+            <tr>
+                <th>Input Feature</th>
+                <th>Feature Value</th>
+
+            </tr>
+            {% for column,value in context['credit_card_data'].items() %}
+
+
+
+            <tr>
+                <td>{{column}}</td>
+                <td>{{value[0]}}</td>
+            </tr>
+
+            {% endfor %}
+            <tr>
+
+                <td>default payment next month</td>
+                <td>
+                    {{ context['default_payment_next_month'] }}
+                </td>
+            </tr>
+        </table>
+
+        {% else %}
+       
+              <h5 class="card-title">Submit Form</h5>
+              <p class="card-text">Kindly provide necessary information to estimate the credit card defaultation</p>
+            
+         
+
+        {% endif %}
+        Go to <a href="/" class="btn btn-primary">Home</a>
+    </div>
+</div>
+    </div>
+
+    {% endblock %}
+            
