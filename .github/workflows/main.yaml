@@ -22,20 +22,7 @@ jobs:
     -
       name: Generate Deployment Package
       run: zip -r deploy.zip *
-    -
-      name: Get timestamp
-      uses: gerred/actions/current-time@master
-      id: current-time
-        
-    - name: Run string replace
-      uses: frabert/replace-string-action@master
-      id: format-time
-      with:
-        pattern: '[:\.]+'
-        string: "${{ steps.current-time.outputs.time }}"
-        replace-with: '-'
-        flags: 'g'
-
+    
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v14
       with:
@@ -43,6 +30,6 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: credit_card_default_prediction-api
         environment_name: Creditcarddefaultpredictionapi-env
-        version_label: "credit_card_default_prediction-api-${{ steps.format-time.outputs.replaced }}"
+        version_label: 12345
         region: ap-south-1
         deployment_package: deploy.zip
