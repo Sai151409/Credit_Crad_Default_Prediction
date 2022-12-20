@@ -44,5 +44,5 @@ jobs:
         application_name: credit_card_default_prediction-api
         environment_name: Creditcarddefaultpredictionapi-env
         version_label: "credit_card_default_prediction-api-${{ steps.format-time.outputs.replaced }}"
-        region: ap-soth-1
+        region: ap-south-1
         deployment_package: deploy.zip
