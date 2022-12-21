@@ -8,50 +8,49 @@
 
 {% block content %}
 
-<div class="col-md-4 col-lg-4 col-sm-12">
-    <div class="card">
-        <div class="card-header">
-           View Logs
-        </div>
-        <div class="card-body">
-    
-            <h5 class="card-title">Log Files</h5>
-            <p class="card-text">All model training log file can be downloaded.</p>
-            <a class="btn btn-primary" href="/logs">Check Logs</a>
-        </div>
-    </div>
-    </div>
-    
-    
-    <div class="col-md-4 col-lg-4 col-sm-12" style="margin-bottom:20px;">
+<div class="row">
+    <div class="col-md-4 col-lg-4 col-sm-12">
         <div class="card">
             <div class="card-header">
-               View Artifacts
+               View Logs
             </div>
             <div class="card-body">
         
+                <h5 class="card-title">Log Files</h5>
+                <p class="card-text">All model training log file can be downloaded.</p>
+                <a class="btn btn-primary" href="/logs">Check Logs</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-4 col-sm-12" style="margin-bottom:20px;">
+        <div class="card">
+            <div class="card-header">
+                View Artifacts
+            </div>
+            <div class="card-body">
                 <h5 class="card-title">Artifact Files</h5>
                 <p class="card-text">All model artifacts file can be downloaded.</p>
                 <a class="btn btn-primary" href="/artifact">Check Artifacts</a>
             </div>
         </div>
+    </div>
+        
+    <div class="col-md-4 col-lg-4 col-sm-12"  style="margin-bottom:20px;">
+        <div class="card">
+            <div class="card-header">
+                View Trained Models
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Trained Models</h5>
+                <p class="card-text">All model file can be downloaded.</p>
+                <a class="btn btn-primary" href="/saved_models">Check Models</a>
+            </div>
         </div>
-    
-    
-    
-        <div class="col-md-4 col-lg-4 col-sm-12"  style="margin-bottom:20px;">
-            <div class="card">
-                <div class="card-header">
-                   View Trained Models
-                </div>
-                <div class="card-body">
-            
-                    <h5 class="card-title">Trained Models</h5>
-                    <p class="card-text">All model file can be downloaded.</p>
-                    <a class="btn btn-primary" href="/saved_models">Check Models</a>
-                </div>
-            </div>
-            </div>
+    </div>
+
+</div>
+
+
     
             
         <div class="col-md-4 col-lg-4 col-sm-12"  style="margin-bottom:20px;">
