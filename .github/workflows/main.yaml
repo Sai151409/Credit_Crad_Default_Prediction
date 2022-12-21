@@ -20,7 +20,8 @@ jobs:
       name: Build the Docker image
       run: docker build -t sairam151409/credit_card_default_prediction -f Dockerfile .
     
-    name: Get timestamp
+    -
+      name: Get timestamp
       uses: gerred/actions/current-time@master
       id: current-time
         
