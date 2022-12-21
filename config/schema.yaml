@@ -1,0 +1,143 @@
+columns:
+  LIMIT_BAL : int64
+  SEX : int64
+  EDUCATION : int64
+  MARRIAGE : int64
+  AGE : int64
+  PAY_0 : int64
+  PAY_2  : int64
+  PAY_3 : int64
+  PAY_4 : int64
+  PAY_5 : int64
+  PAY_6 : int64
+  BILL_AMT1 : int64
+  BILL_AMT2 : int64
+  BILL_AMT3 : int64
+  BILL_AMT4 : int64
+  BILL_AMT5 : int64
+  BILL_AMT6 : int64
+  PAY_AMT1 : int64
+  PAY_AMT2 : int64
+  PAY_AMT3 : int64
+  PAY_AMT4 : int64
+  PAY_AMT5 : int64
+  PAY_AMT6 : int64
+  default payment next month : int64
+
+target_column:
+  - default payment next month
+
+numerical_columns:
+  - LIMIT_BAL
+  - AGE
+  - BILL_AMT1
+  - BILL_AMT2
+  - BILL_AMT3
+  - BILL_AMT4
+  - BILL_AMT5
+  - BILL_AMT6
+  - PAY_AMT1
+  - PAY_AMT2
+  - PAY_AMT3
+  - PAY_AMT4
+  - PAY_AMT5
+  - PAY_AMT6
+
+categorical_columns:
+  - SEX
+  - EDUCATION
+  - MARRIAGE
+  - PAY_0
+  - PAY_2
+  - PAY_3
+  - PAY_4
+  - PAY_5
+  - PAY_6
+
+domain_value:
+  SEX: 
+    - 1
+    - 2
+  EDUCATION:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+  MARRIAGE:
+    - 0
+    - 1
+    - 2
+    - 3
+  PAY_0:
+    - -2
+    - -1
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+  PAY_2:
+    - -2
+    - -1
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+  PAY_3:
+    - -2
+    - -1
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+  PAY_4:
+    - -2
+    - -1
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+  PAY_5:
+    - -2
+    - -1
+    - 0
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+  PAY_6:
+    - -2
+    - -1
+    - 0
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8

@@ -19,27 +19,25 @@ jobs:
     - 
       name: Build the Docker image
       run: docker build -t sairam151409/credit_card_default_prediction -f Dockerfile .
-    
-    - 
-      name: Get current time
-      uses: josStorer/get-current-time@v2.0.2
+
+    -
+      name: Generate Deployment Package
+      run: zip -r deploy.zip *
+
+    -
+      name: Get timestamp
+      uses: gerred/actions/current-time@master
       id: current-time
-      with:
-        format: YYYYMMDD-HH
-        utcOffset: "+08:00"
         
     - name: Run string replace
       uses: frabert/replace-string-action@master
       id: format-time
       with:
         pattern: '[:\.]+'
-        string: "${{ steps.versions.outputs.time }}"
+        string: "${{ steps.current-time.outputs.time }}"
         replace-with: '-'
         flags: 'g'
 
-    -
-      name: Generate Deployment Package
-      run: zip -r deploy.zip *
     
     - name: Deploy to EB
       uses: einaregilsson/beanstalk-deploy@v14
@@ -48,6 +46,6 @@ jobs:
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         application_name: Credit_Card_Defaultation
         environment_name: Creditcarddefaultation-env
-        version_label: "Credit_Card_Defaultation-${{ steps.format-time.outputs.time }}"
+        version_label: "Credit_Card_Defaultation-${{ steps.format-time.outputs.replaced }}"
         region: ap-south-1
         deployment_package: deploy.zip
